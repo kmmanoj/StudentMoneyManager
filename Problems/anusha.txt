@@ -1,0 +1,3 @@
+- Student may lose track of how much money he has spent.
+- Student may be unaware of the most optimal ways to spend money.
+- Student may be unaware of ways to manage money so as to make it last until the next credit to their account.
