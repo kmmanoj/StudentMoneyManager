@@ -1,3 +1,4 @@
+<pre>
 login(username, password):
 	{ auth_token }
 	{ key }
@@ -42,3 +43,4 @@ get_all_unique_categories():
 	{ data }
 
 // some more to be added .. that are specific to pie chart and line graphs
+</pre>
