@@ -42,5 +42,19 @@ get_all_unique_categories():
 	{ cookie }
 	{ data }
 
-// some more to be added .. that are specific to pie chart and line graphs
+get_week_summary():
+	{ cookie }
+	{ data }
+get_category_summary():
+	{ cookie }
+	{ data }
+get_credit_transactions():
+	{ cookie, offset, limit }
+	{ data }
+get_debit_transactions():
+	{ cookie, offset, limit }
+	{ data }
+get_saved_transactions():
+	{ cookie, offset, limit }
+	{ data }
 </pre>
