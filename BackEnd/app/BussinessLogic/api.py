@@ -1,61 +1,26 @@
-import app.ORM.orm as orm
+'''
+BUSSINESS LOGIC, that handles complex functionalities
 
-def get_transactions(offset, limit):
-    response = dict()
-    response['data'] = orm.get_transactions(offset, limit)
-    return response
+Author: Manoj Vignesh K M
+version : 1.0.0
+Date : 8 November 2017
+'''
+import app.DBdriver.driver as driver
 
-def add_transaction(request):
-    response = dict()
-    response['status'] = orm.add_transaction(request)
-    return response
-
-def delete_transaction(timestamp):
-    response = dict()
-    response['status'] = orm.delete_transaction(timestamp)
-    return response
-
-def edit_transaction(timestamp, updated):
-    response = dict()
-    response['status'] = orm.edit_transaction(timestamp, updated)
-    return response
-
-def get_debt_list(offset, limit):
-    response = dict()
-    response['data'] = orm.get_debt_list(offset, limit)
-    return response
-
-def add_debt(request):
-    response = dict()
-    response['status'] = orm.add_debt(request)
-    return response
-
-def delete_debt(timestamp):
-    response = dict()
-    response['status'] = orm.delete_debt(timestamp)
-    return response
-
-def edit_debt(timestamp, updated):
-    response = dict()
-    response['status'] = orm.edit_debt(timestamp, updated)
-    return response
-
-def get_owe_list(offset, limit):
-    response = dict()
-    response['data'] = orm.get_debt_list(offset, limit)
-    return response
-
-def add_owe(request):
-    response = dict()
-    response['status'] = orm.add_owe(request)
-    return response
-
-def delete_debt(timestamp):
-    response = dict()
-    response['status'] = orm.delete_debt(timestamp)
-    return response
-
-def edit_debt(timestamp, updated):
-    response = dict()
-    response['status'] = orm.edit_debt(timestamp, updated)
-    return response
+def authenticate(username, auth_token): pass
+def register(cookie, data): pass
+def get_transactions(cookie, offset, limit): pass
+def add_transaction(cookie, data): pass
+def delete_transaction(cookie, doc_id): pass
+def get_transaction_by_id(cookie, doc_id): pass
+def update_transactions(cookie, data): pass
+def get_debt_list(cookie, offset, limit): pass
+def update_debt_list(cookie, data): pass
+def get_owe_list(cookie, offset, limit): pass
+def update_owe_list(cookie, offset, limit): pass
+def get_all_categories(cookie): pass
+def get_summary_by_category(cookie): pass
+def get_summary_by_weekdays(cookie): pass
+def get_credit_transactions(cookie, offset, limit): pass
+def get_debit_transactions(cookie, offset, limit): pass
+def get_saved_transactions(cookie, offset, limit): pass
