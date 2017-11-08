@@ -1,6 +1,6 @@
 <pre>
 login():
-	{ auth_token }
+	{ username, auth_token }
 	{ key }
 	where key : E(key+cookie, password)
 	and auth_token : E(username+TS, password)
