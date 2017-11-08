@@ -1,40 +1,40 @@
 <pre>
-login(username, password):
+login():
 	{ auth_token }
 	{ key }
 	where key : E(key+cookie, password)
 	and auth_token : E(username+TS, password)
 	Cipher text = Encryption(text, key)
-register(data):
+register():
 	{ username, name, password , birth_date }
 	{ status }
 	where password : E(password, server_public_key)
-get_transactions(offset, limit):
+get_transactions():
 	{ cookie, offset, limit }
 	{ data }
 	where cookie : E(cookie+TS, key)
-add_transaction(data):
+add_transaction():
 	{ cookie, date, type, category, dealer, paid }
 	{ status }
-delete_transaction(data):
+delete_transaction():
 	{ cookie, id }
 	{ status }
-get_transaction(id):
+get_transaction():
 	{ cookie, id }
 	{ data }
-update_transaction(data):
+update_transaction():
 	{ cookie, data }
 	{ status }
-get_debt_list(offset, limit):
+get_debt_list():
 	{ cookie, offset, limit }
 	{ data }
-debt_update(id_list):
+debt_update():
 	{ cookie, id_list }
 	{ status }
-get_owe_list(offset, limit):
+get_owe_list():
 	{ cookie, offset, limit }
 	{ data }
-owe_update(id_list):
+owe_update():
 	{ cookie, id_list }
 	{ status }
 
