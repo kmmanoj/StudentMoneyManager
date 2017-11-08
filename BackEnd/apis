@@ -1,8 +1,0 @@
-GET /transactions/<offset>/<limit>
-POST /transaction/add
-DELETE /transaction/delete/<timestamp>
-PUT /transaction/edit/<timestamp>
-GET /debt/<offset>/<limit>
-GET /owe/<offset>/<limit>
-POST /debt/add
-POST /owe/add
