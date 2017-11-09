@@ -30,11 +30,12 @@ def test_connection():
 '''
 secure API to get an user authenticated, 
 given the authentication token and the username 
-authentication token = username + separator + timestamp encrypted by password
+authentication token = username + separator + TS encrypted by password
 '''
 @app.route("/auth/username/<auth_token>")
-def authenticate(username, auth_token):
-    return dumps(api.authenticate(username, auth_token))
+# def authenticate(username, auth_token):
+def authenticate(username, password):
+    return dumps(api.authenticate(username, password))
 
 '''
 API to register a user, 
@@ -45,6 +46,13 @@ the password is encrypted with server's public key
 def register():
     data = __to_dict(request.form)
     return dumps(api.register(data))
+
+'''
+API to check if a user with username already exists
+'''
+@app.route("/user/<username>")
+def check_user(username):
+    return dumps(api.check_user(username))
 
 '''
 API to get the list of atmost limit number of transactions for a user,
@@ -101,7 +109,7 @@ def update_transactions():
         return dumps({"error":"missing header user"})
     user = request.headers.get("user")
     data = __to_dict(request.form)
-    return dumps(api.update_transactions(user, data))
+    return dumps(api.update_transactions(user, data['ids']))
 
 '''
 API to get the list of atmost limit number of debts for a user,
