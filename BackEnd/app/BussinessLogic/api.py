@@ -8,7 +8,7 @@ Date : 8 November 2017
 import app.DBdriver.driver as driver
 
 def authenticate(username, auth_token): pass
-def register(cookie, data): pass
+def register(data): pass
 def get_transactions(cookie, offset, limit): pass
 def add_transaction(cookie, data): pass
 def delete_transaction(cookie, doc_id): pass
