@@ -19,15 +19,24 @@ def get_details(username):
         db_result['name'] = None
         db_result['username'] = username
         db_result['password'] = None
+        db_result['dob'] = None
         return db_result
     result = result[0]
     db_result['name'] = result['name']
     db_result['username'] = result['username']
     db_result['password'] = result['password']
+    db_result['dob'] = result['dob']
     return db_result
     
-def add_user(name, date_of_birth, username, password): pass
-def get_transactions(user, offset, limit): pass
+def add_user(name, date_of_birth, username, password):
+    if db['userDB'].insert({"name":name, "dob":date_of_birth, "username":username, "password":password}):
+        return True
+    else:
+        return False
+
+def get_transactions(user, offset, limit):
+    return list(db[user].find().skip(offset).limit(limit))
+
 def add_transaction(user, date, type, category, dealer, status): pass 
 def delete_transaction(user, doc_id): pass 
 def get_transaction_by_id(user, doc_id): pass
