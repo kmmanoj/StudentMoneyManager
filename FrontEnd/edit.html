@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>edit transaction</title>
+    </head>
+    <body onload="get_transaction_details()">
+        <h1>edit transaction</h1>
+        <label>id : <input type="text" disabled/></label><br/>
+        <label>date : <input type="date"/></label><br/>
+        <label>type : 
+            <select>
+                <option>Credit</option>
+                <option>Debit</option>
+                <option>Save</option>
+            </select>
+        </label><br/>
+        <label>category:
+            <select>
+                <option>category1</option>
+                <option>category2</option>
+            </select>
+        </label>
+        <label>
+            dealer : <input type="text" placeholder="dealer"/><br/>
+        </label>
+        <label>paid_status : <input type="checkbox"/></label><br/>
+        <label>amount <input type="number"/> </label><br/>
+        <button onclick="add()">update transaction</button>
+    </body>
+</html>
