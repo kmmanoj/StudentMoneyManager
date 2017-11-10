@@ -75,7 +75,8 @@
 				type : string,
 				category : string,
 				dealer : string,
-				paid_status : boolean
+				paid_status : boolean,
+				amount : int
 			}
 		])
 	}
@@ -91,7 +92,8 @@
 	type : string,
 	category : string,
 	dealer : string,
-	paid_status : boolean
+	paid_status : boolean,
+	amount : int
 }
 </pre>
 <p>response</p>
@@ -133,7 +135,8 @@
 		type : string,
 		category : string,
 		dealer : string,
-		paid_status : boolean
+		paid_status : boolean,
+		amount : int
 	}
 }
 </pre>
@@ -147,7 +150,8 @@
 	type : string, 
 	category : string,
 	dealer : string,
-	paid_status : boolean
+	paid_status : boolean,
+	amount : int
 }
 </pre>
 <p>response</p>
@@ -178,6 +182,7 @@
 				type : string, 
 				category : string,
 				dealer : string,
+				amount : int
 			}
 		])	
 	}
@@ -221,6 +226,7 @@
 				type : string, 
 				category : string,
 				dealer : string,
+				amount : int
 			}
 		])	
 	}
@@ -332,6 +338,7 @@
 				date : date,
 				category : string,
 				dealer : string,
+				amount : int
 			}
 		])
 	}
@@ -353,6 +360,7 @@
 				date : date,
 				category : string,
 				dealer : string,
+				amount : int
 			}
 		])
 	}
@@ -374,6 +382,7 @@
 				date : date,
 				category : string,
 				dealer : string,
+				amount : int
 			}
 		])
 	}
