@@ -32,7 +32,8 @@ secure API to get an user authenticated,
 given the authentication token and the username 
 authentication token = username + separator + TS encrypted by password
 '''
-@app.route("/auth/username/<auth_token>")
+# @app.route("/auth/<auth_token>")
+@app.route("/auth/<username>/<password>")
 # def authenticate(username, auth_token):
 def authenticate(username, password):
     return dumps(api.authenticate(username, password))
