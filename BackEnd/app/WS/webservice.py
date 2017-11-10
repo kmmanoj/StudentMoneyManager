@@ -9,6 +9,7 @@ from flask import Flask, request, abort
 import app.BussinessLogic.api as api
 from bson.json_util import dumps
 app = Flask(__name__)
+missing_header_error = {"status":200, "error":"Missing header username", "response":None}
 
 ''' 
 private function to convert MultiOrderedDict to dictionary, 
@@ -62,7 +63,7 @@ starting from the offset
 @app.route("/transactions/all/<int:offset>/<int:limit>")
 def get_transactions(offset, limit):
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     return dumps(api.get_transactions(user, offset, limit))
 
@@ -73,7 +74,7 @@ given date, type, category, dealer, paid_status
 @app.route("/transactions/add", methods=['POST'])
 def add_transaction():
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     data = __to_dict(request.form)
     return dumps(api.add_transactions(user, data))
@@ -85,7 +86,7 @@ given the id of the document
 @app.route("/transactions/delete/<doc_id>")
 def delete_transaction(doc_id):
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     return dumps(api.delete_transactions(user, doc_id))
 
@@ -96,7 +97,7 @@ given the id of the document
 @app.route("/transactions/id/<doc_id>")
 def get_transaction_by_id(doc_id):
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     return dumps(api.get_transaction_by_id(user, doc_id))
 
@@ -107,10 +108,10 @@ given the previous transaction details
 @app.route("/transactions/edit", methods=['POST'])
 def update_transactions():
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     data = __to_dict(request.form)
-    return dumps(api.update_transactions(user, data['ids']))
+    return dumps(api.update_transactions(user, data))
 
 '''
 API to get the list of atmost limit number of debts for a user,
@@ -119,7 +120,7 @@ starting from the offset
 @app.route("/debts/all/<int:offset>/<int:limit>")
 def get_debt_list(offset, limit):
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     data = __to_dict(request.form)
     return dumps(api.get_debt_list(user, offset, limit))
@@ -131,7 +132,7 @@ given the transactions id list
 @app.route("/debts/update", methods=['POST'])
 def update_debt_list():
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     data = __to_dict(request.form)
     return dumps(api.update_debt_list(user, data))
@@ -143,7 +144,7 @@ starting from the offset
 @app.route("/owes/all/<int:offset>/<int:limit>")
 def get_owe_list(offset, limit):
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     return dumps(api.get_owe_list(user, offset, limit))
 
@@ -154,7 +155,7 @@ given the transactions id list
 @app.route("/owes/update", methods=['POST'])
 def update_owe_list():
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     data = __to_dict(request.form)
     return dumps(api.update_owe_list(user, offset, limit))
@@ -165,7 +166,7 @@ API to get the list of all categories of money spent for a user
 @app.route("/categories/all")
 def get_all_categories():
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     return dumps(api.get_all_categories(user))
 
@@ -175,7 +176,7 @@ API to get the summary data grouped by category, for a user
 @app.route("/summary/category")
 def get_summary_by_category():
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     return dumps(api.get_summary_by_category(user))
 
@@ -185,7 +186,7 @@ API to get the summary data grouped by weekdays, for a user
 @app.route("/summary/weekdays")
 def get_summary_by_weekdays():
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     return dumps(api.get_summary_by_weekdays(user))
 
@@ -193,10 +194,10 @@ def get_summary_by_weekdays():
 API to get list of atmost limit number of credit transactions for a user,
 starting from the offset 
 '''
-@app.route("/transactions/category/credit/<int:offset>/<int:limit>")
+@app.route("/transactions/type/credit/<int:offset>/<int:limit>")
 def get_credit_transactions(offset, limit):
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     return dumps(api.get_credit_transactions(user, offset, limit))
 
@@ -204,10 +205,10 @@ def get_credit_transactions(offset, limit):
 API to get list of atmost limit number of debit transactions for a user,
 starting from the offset
 '''
-@app.route("/transactions/category/debit/<int:offset>/<int:limit>")
+@app.route("/transactions/type/debit/<int:offset>/<int:limit>")
 def get_debit_transactions(offset, limit):
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     return dumps(api.get_debit_transactions(user, offset, limit))
 
@@ -215,10 +216,10 @@ def get_debit_transactions(offset, limit):
 API to get list of atmost limit number of save type transactions for a user,
 starting from the offset
 '''
-@app.route("/transactions/category/save/<int:offset>/<int:limit>")
+@app.route("/transactions/type/save/<int:offset>/<int:limit>")
 def get_saved_transactions(offset, limit):
     if "user" not in request.headers.keys():
-        return dumps({"error":"missing header user"})
+        return dumps(missing_header_error)
     user = request.headers.get("user")
     return dumps(api.get_saved_transactions(user, offset, limit))
 

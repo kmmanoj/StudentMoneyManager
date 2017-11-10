@@ -179,7 +179,6 @@
 		array([
 			{
 				date : date,
-				type : string, 
 				category : string,
 				dealer : string,
 				amount : int
@@ -223,7 +222,6 @@
 		array([
 			{
 				date : date,
-				type : string, 
 				category : string,
 				dealer : string,
 				amount : int

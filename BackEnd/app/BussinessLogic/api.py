@@ -57,7 +57,8 @@ starting from offset and limiting number of records to limit
 def get_transactions(user, offset, limit): 
     response = dict()
     response['status'] = 200
-    response['response'] = driver.get_transactions(user, offset, limit)
+    response['response'] = dict()
+    response['response']['data'] = driver.get_transactions(user, offset, limit)
     response['error'] = None
     return response
 
@@ -67,7 +68,8 @@ function to add a transaction record for the user
 def add_transaction(user, data): 
     response = dict()
     response['status'] = 200
-    response['response'] = driver.add_transaction(user, date=data['date'], type=data['type'], category=data['category'], dealer=data['dealer'], status=data['status'])
+    response['response'] = dict()
+    response['response']['status'] = driver.add_transaction(user, date=data['date'], type=data['type'], category=data['category'], dealer=data['dealer'], paid_status=data['paid_status'], amount = data['amount'])
     response['error'] = None
     return response
 
@@ -77,7 +79,8 @@ function to delete a transaction record for a user given the id
 def delete_transaction(user, doc_id): 
     response = dict()
     response['status'] = 200
-    response['response'] = driver.delete_transaction(user, doc_id)
+    response['response'] = dict()
+    response['response']['status'] = driver.delete_transaction(user, doc_id)
     response['error'] = None
     return response
 
@@ -87,7 +90,8 @@ function to get a specific transaction record given the id
 def get_transaction_by_id(user, doc_id): 
     response = dict()
     response['status'] = 200
-    response['response'] = driver.get_tansaction_by_id(user, doc_id)
+    response['response'] = dict()
+    response['response']['data'] = driver.get_tansaction_by_id(user, doc_id)
     response['error'] = None
     return response
     
@@ -97,8 +101,9 @@ function to update the transaction given the new data
 def update_transactions(user, data): 
     response = dict()
     response['status'] = 200
-    response['response'] = driver.update_transactions(user, doc_id=data['id'], date=data['date'], type=data['type'], category=data['category'], dealer=data['dealer'], status=data['status'])
-    response['erorr'] = None
+    response['response'] = dict()
+    response['response']['status'] = driver.update_transactions(user, doc_id=data['id'], date=data['date'], type=data['type'], category=data['category'], dealer=data['dealer'], paid_status=data['paid_status'], amount = data['amount'])
+    response['error'] = None
     return response
 
 '''
@@ -108,7 +113,8 @@ starting from the offset and limiting the number of output records to limit
 def get_debt_list(user, offset, limit): 
     response = dict() 
     response['status'] = 200
-    response['response'] = driver.get_debt_list(user, offset, limit)
+    response['response'] = dict()
+    response['response']['data'] = driver.get_debt_list(user, offset, limit)
     response['error'] = None
     return response
 
@@ -121,7 +127,8 @@ def update_debt_list(user, id_list):
     count = 0
     for doc_id in id_list:
         count += driver.update_debt(user, doc_id)
-    response['response'] = count
+    response['response'] = dict()
+    response['response']['count'] = count
     response['error'] = None
     return response
 
@@ -132,7 +139,8 @@ starting from the offset and limiting the number of output records to limit
 def get_owe_list(user, offset, limit): 
     response = dict()
     response['status'] = 200
-    response['response'] = driver.get_owe_list(user, offset, limit)
+    response['response'] = dict()
+    response['response']['data'] = driver.get_owe_list(user, offset, limit)
     response['error'] = None
     return response
 
@@ -145,7 +153,8 @@ def update_owe_list(user, offset, limit):
     count = 0
     for doc_id in id_list:
         count += driver.update_owe_list(user, offset, limit)
-    response['response'] = count
+    response['response'] = dict()
+    response['response']['count'] = count
     response['error'] = None
     return response
 
@@ -155,7 +164,8 @@ function to get the list of unique categories for a user
 def get_all_categories(user): 
     response = dict()
     response['status'] = 200
-    response['response'] = driver.get_all_categories(user)
+    response['response'] = dict()
+    response['response']['data'] = driver.get_all_categories(user)
     response['error'] = None
     return response
 
@@ -165,7 +175,10 @@ function to get summary data by category for a user
 def get_summary_by_category(user): 
     response = dict()
     response['status'] = 200
-    response['response'] = driver.get_summary_by_category(user)
+    response['response'] = dict()
+    categories = driver.get_all_categories(user)
+    for category in categories:
+        response['response']['data'][category] = driver.get_summary_by_category(user, category)
     response['error'] = None
     return response
 
@@ -175,7 +188,10 @@ function to get summary data by weekdays for a user
 def get_summary_by_weekdays(user): 
     response = dict()
     response['status'] = 200
-    response['response'] = driver.get_summary_by_weekdays(user)
+    response['response'] = dict()
+    weekdays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
+    for day in weekdays:
+        response['response']['data'][day] = driver.get_summary_by_weekday(user, day)
     response['error'] = None
     return response
 
@@ -186,7 +202,8 @@ starting from the offset and limiting the number of output records to limit
 def get_credit_transactions(user, offset, limit): 
     response = dict()
     response['status'] = 200
-    response['response'] = driver.get_credit_transactions(user, offset, limit)
+    response['response'] = dict()
+    response['response']['data'] = driver.get_credit_transactions(user, offset, limit)
     response['error'] = None
     return response
 
@@ -197,7 +214,8 @@ starting from the offset and limiting the number of output records to limit
 def get_debit_transactions(user, offset, limit): 
     response = dict()
     response['status'] = 200
-    response['response'] = driver.get_debit_transactions(user, offset, limit)
+    response['response'] = dict()
+    response['response']['data'] = driver.get_debit_transactions(user, offset, limit)
     response['error'] = None
     return response
 
@@ -208,6 +226,7 @@ starting from the offset and limiting the number of output records to limit
 def get_saved_transactions(user, offset, limit): 
     response = dict()
     response['status'] = 200
-    response['response'] = driver.get_saved_transactions(user, offset, limit)
+    response['response'] = dict()
+    response['response']['data'] = driver.get_saved_transactions(user, offset, limit)
     response['error'] = None
     return response
