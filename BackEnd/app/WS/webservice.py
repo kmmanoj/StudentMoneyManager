@@ -9,7 +9,9 @@ Date : 8 November 2017
 from flask import Flask, request, abort
 import app.BussinessLogic.api as api
 from bson.json_util import dumps
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 missing_header_error = dumps({'status':200, 'error':'Missing header username', 'response':None})
 method_not_allowed = dumps({'status':405, 'error': 'Method not allowed', 'response':None})
 methods_list = ['GET','POST','PUT','DELETE','LOCK','HEAD','TRACE','PATCH','UNLOCK','OPTIONS','VIEW','PURGE','COPY','LINK','UNLINK','PROPFIND']
