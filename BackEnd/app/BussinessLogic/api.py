@@ -33,8 +33,26 @@ def register(data):
     response = dict()
     response['status'] = 200
     response['response'] = dict()
+    required_keys = ['username','dob','name','password']
+    missing_key = None
+    for key in required_keys:
+        if key not in data.keys():
+            missing_key = key
+            break
+    if missing_key is not None:
+        response['response']['status'] = None
+        response['error'] = 'Missing detail : '+missing_key
+        return response
+
+    check_user_existance = driver.get_details(data['username'])
+    if check_user_existance['name']:
+        response['response']['status'] = None
+        response['error'] = 'Username already exists'
+        return response
+
     response['response']['status'] = driver.add_user(name=data['name'], date_of_birth=data['dob'], username=data['username'], password=data['password'])
     response['error'] = None
+    return response
 
 '''
 function to check if the user with a specific username already exist
@@ -42,7 +60,7 @@ function to check if the user with a specific username already exist
 def check_user(username): 
     response = dict()
     response['status'] = 200
-    response = dict()
+    response['response'] = dict()
     if driver.get_details(username)['name'] is None:
         response['response']['exists'] = False
     else:
@@ -69,8 +87,22 @@ def add_transaction(user, data):
     response = dict()
     response['status'] = 200
     response['response'] = dict()
-    response['response']['status'] = driver.add_transaction(user, date=data['date'], type=data['type'], category=data['category'], dealer=data['dealer'], paid_status=data['paid_status'], amount = data['amount'])
-    response['error'] = None
+    required_keys = ['date','type','category','dealer','paid_status','amount']
+    types = ['save','credit','debit']
+    missing_key = None
+    for key in required_keys:
+        if key not in data.keys():
+            missing_key = key
+            break
+    if str.lower(data['type']) not in types:
+        response['response']['status'] = None
+        response['error'] = 'Undefined transaction type : '+str.lower(data['type'])
+    elif missing_key is not None:
+        response['response']['status'] = None
+        response['error'] = 'Missing detail : '+missing_key
+    else:
+        response['response']['status'] = driver.add_transaction(user, date=data['date'], transaction_type=data['type'], category=data['category'], dealer=data['dealer'], paid_status=data['paid_status'], amount = data['amount'])
+        response['error'] = None
     return response
 
 '''
@@ -91,19 +123,33 @@ def get_transaction_by_id(user, doc_id):
     response = dict()
     response['status'] = 200
     response['response'] = dict()
-    response['response']['data'] = driver.get_tansaction_by_id(user, doc_id)
+    response['response']['data'] = driver.get_transaction_by_id(user, doc_id)
     response['error'] = None
     return response
     
 '''
 function to update the transaction given the new data
 '''
-def update_transactions(user, data): 
+def update_transactions(user, data):
     response = dict()
     response['status'] = 200
     response['response'] = dict()
-    response['response']['status'] = driver.update_transactions(user, doc_id=data['id'], date=data['date'], type=data['type'], category=data['category'], dealer=data['dealer'], paid_status=data['paid_status'], amount = data['amount'])
-    response['error'] = None
+    required_keys = ['date','type','category','dealer','paid_status','amount']
+    types = ['save','credit','debit']
+    missing_key = None
+    for key in required_keys:
+        if key not in data.keys():
+            missing_key = key
+            break
+    if str.lower(data['type']) not in types:
+        response['response']['status'] = None
+        response['error'] = 'Undefined transaction type : '+str.lower(data['type'])
+    elif missing_key is not None:
+        response['response']['status'] = None
+        response['error'] = 'Missing detail : '+missing_key
+    else:
+        response['response']['status'] = driver.update_transaction(user, date=data['date'], transaction_type=data['type'], category=data['category'], dealer=data['dealer'], paid_status=data['paid_status'], amount = data['amount'])
+        response['error'] = None
     return response
 
 '''
@@ -147,12 +193,12 @@ def get_owe_list(user, offset, limit):
 '''
 function to update the status of specified owe list by id
 '''
-def update_owe_list(user, offset, limit): 
+def update_owe_list(user, id_list): 
     response = dict()
     response['status'] = 200
     count = 0
     for doc_id in id_list:
-        count += driver.update_owe_list(user, offset, limit)
+        count += driver.update_owe_list(user, id_list)
     response['response'] = dict()
     response['response']['count'] = count
     response['error'] = None
@@ -203,7 +249,7 @@ def get_credit_transactions(user, offset, limit):
     response = dict()
     response['status'] = 200
     response['response'] = dict()
-    response['response']['data'] = driver.get_credit_transactions(user, offset, limit)
+    response['response']['data'] = driver.get_transactions_of_type(user, offset, limit,'credit')
     response['error'] = None
     return response
 
@@ -215,7 +261,7 @@ def get_debit_transactions(user, offset, limit):
     response = dict()
     response['status'] = 200
     response['response'] = dict()
-    response['response']['data'] = driver.get_debit_transactions(user, offset, limit)
+    response['response']['data'] = driver.get_transactions_of_type(user, offset, limit,'dedit')
     response['error'] = None
     return response
 
@@ -227,6 +273,6 @@ def get_saved_transactions(user, offset, limit):
     response = dict()
     response['status'] = 200
     response['response'] = dict()
-    response['response']['data'] = driver.get_saved_transactions(user, offset, limit)
+    response['response']['data'] = driver.get_transactions_of_type(user, offset, limit,'save')
     response['error'] = None
     return response
