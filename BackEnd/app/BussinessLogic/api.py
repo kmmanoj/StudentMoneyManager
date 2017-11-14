@@ -94,12 +94,14 @@ def add_transaction(user, data):
         if key not in data.keys():
             missing_key = key
             break
-    if str.lower(data['type']) not in types:
-        response['response']['status'] = None
-        response['error'] = 'Undefined transaction type : '+str.lower(data['type'])
-    elif missing_key is not None:
+    if missing_key is not None:
         response['response']['status'] = None
         response['error'] = 'Missing detail : '+missing_key
+        return response
+
+    if str.lower(str(data['type'])) not in types:
+        response['response']['status'] = None
+        response['error'] = 'Undefined transaction type : '+str.lower(str(data['type']))
     else:
         response['response']['status'] = driver.add_transaction(user, date=data['date'], transaction_type=data['type'], category=data['category'], dealer=data['dealer'], paid_status=data['paid_status'], amount = data['amount'])
         response['error'] = None

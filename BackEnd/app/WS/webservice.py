@@ -286,7 +286,7 @@ def get_saved_transactions(offset, limit):
 The default handler
 '''
 @app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
+@app.route('/<path:path>', methods = methods_list)
 def pnf(path):
     return dumps({'status':404, 'path':path})
 
