@@ -24,12 +24,13 @@ function loginResult()
 			xhr = new XMLHttpRequest();
 			xhr.onreadystatechange = startSesh;
 			xhr.open("GET", "startSesh.php?uname="+uname.value, true);
-		  xhr.setRequestHeader("username", uname.value);
+		  	xhr.setRequestHeader("username", uname.value);
 			xhr.send();
+
 		}
 		else
 		{
-		 	t = document.createTextNode(jsonObj.error);
+		 	t = document.createTextNode("Login not successful :(");
 		}
 		
 		h2 = document.createElement("h2");
@@ -41,7 +42,9 @@ function startSesh()
 {
 	if(this.readyState == 4 && this.status == 200)
 	{
-		window.alert(this.reponse);
+		//window.alert(this.reponse);
+    	//redirect to another page --> home.php
+    	window.location.href
 	}
 }
 function check()

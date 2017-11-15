@@ -15,7 +15,7 @@ function add()
   else
     paid_status_value = false;
 
-  window.alert(paid_status_value);
+  //window.alert(paid_status_value);
 
   amount = document.getElementById("amount");
   
@@ -35,7 +35,7 @@ function add()
   //in php file extract post, add header to request and send using file_get_contents
   //add header using http_...
   //header: username = $_uname
-  xhr.open("POST", "http://localhost:5000/transactions/add", true);
+  xhr.open("POST", "js/send.php", true);
   xhr.setRequestHeader("Content-type", "application/json");
   //obj1 = JSON.stringify({name : name.value, dob: dob.value, username : uname.value, password : pwd.value});
   obj2 = JSON.stringify(obj1);
@@ -50,14 +50,16 @@ function result()
   if(this.readyState == 4 && this.status == 200)
   {
     jsonObj = JSON.parse(this.responseText);
-    if(jsonObj.status == 1) //ask
+    if(jsonObj.error == null)
     {
-      t = document.createTextNode("Added Transaction Successfully!");
+      if(jsonObj.response.status)
+      { 
+        t = document.createTextNode("Added Transaction Successfully!");
+      }
+      else
+        t = document.createTextNode("Unsuccessful transaction!");
     }
-    else
-    {
-      t = document.createTextNode(jsonObj.error);
-    }
+   
   
     h3 = document.createElement("h3");
     h3.appendChild(t);
