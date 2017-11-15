@@ -5,25 +5,28 @@
     </head>
     <body>
         <h1>Add transaction</h1>
-        <label>date : <input type="date"/></label><br/>
+        <label>date : <input id="date" type="date"/></label><br/>
         <label>type : 
-            <select>
-                <option>Credit</option>
-                <option>Debit</option>
-                <option>Save</option>
+            <select id="type">
+                <option id="credit">Credit</option>
+                <option id="debit">Debit</option>
+                <option id="save">Savings</option>
             </select>
         </label><br/>
         <label>category:
-            <select>
-                <option>category1</option>
-                <option>category2</option>
+            <select id="category">
+                <option id="category1">category1</option>
+                <option id="category2">category2</option>
             </select>
         </label>
         <label>
-            dealer : <input type="text" placeholder="dealer"/><br/>
+            dealer : <input id="dealer" type="text" placeholder="dealer"/><br/>
         </label>
-        <label>paid_status : <input type="checkbox"/></label><br/>
-        <label>amount <input type="number"/> </label><br/>
+        <label>paid_status : <input id="paid_status" type="checkbox"/></label><br/>
+        <label>amount <input id="amount" type="number"/> </label><br/>
         <button onclick="add()">Add new transaction</button>
+        <div id="result"></div>
+
+      <script type="text/javascript" src="js/add.js"></script>
     </body>
 </html>
