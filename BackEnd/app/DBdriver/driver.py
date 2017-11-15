@@ -7,7 +7,7 @@ Date : 8 November 2017
 '''
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-host = '192.168.254.101:27017'
+host = 'localhost:27017'
 db = MongoClient(host)['StudentMoneyManager']
 
 '''

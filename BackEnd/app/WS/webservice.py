@@ -10,6 +10,7 @@ from flask import Flask, request, abort
 import app.BussinessLogic.api as api
 from bson.json_util import dumps
 from flask_cors import CORS
+from json import loads
 app = Flask(__name__)
 CORS(app)
 missing_header_error = dumps({'status':200, 'error':'Missing header username', 'response':None})
@@ -55,7 +56,7 @@ the password is encrypted with server's public key
 @app.route('/register', methods = methods_list)
 def register():
     if request.method == 'POST':
-        data = __to_dict(request.json)
+        data = __to_dict(loads(request.json))
         return dumps(api.register(data))
     else:
         return method_not_allowed
@@ -94,7 +95,7 @@ def add_transaction():
         if 'User' not in request.headers.keys():
             return missing_header_error
         user = request.headers.get('User')
-        data = __to_dict(request.json)
+        data = __to_dict(loads(request.json))
         return dumps(api.add_transaction(user, data))
     else:
         return method_not_allowed
@@ -137,7 +138,7 @@ def update_transactions():
         if 'User' not in request.headers.keys():
             return missing_header_error
         user = request.headers.get('User')
-        data = __to_dict(request.json)
+        data = __to_dict(loads(request.json))
         return dumps(api.update_transactions(user, data))
     else:
         return method_not_allowed
@@ -152,7 +153,7 @@ def get_debt_list(offset, limit):
         if 'User' not in request.headers.keys():
             return missing_header_error
         user = request.headers.get('User')
-        data = __to_dict(request.json)
+        data = __to_dict(loads(request.json))
         return dumps(api.get_debt_list(user, offset, limit))
     else:
         return method_not_allowed
@@ -167,7 +168,7 @@ def update_debt_list():
         if 'User' not in request.headers.keys():
             return missing_header_error
         user = request.headers.get('User')
-        data = __to_dict(request.json)
+        data = __to_dict(loads(request.json))
         return dumps(api.update_debt_list(user, data))
     else:
         return method_not_allowed
@@ -196,7 +197,7 @@ def update_owe_list():
         if 'User' not in request.headers.keys():
             return missing_header_error
         user = request.headers.get('User')
-        data = __to_dict(request.json)
+        data = __to_dict(loads(request.json))
         return dumps(api.update_owe_list(user, data))
     else:
         return method_not_allowed
