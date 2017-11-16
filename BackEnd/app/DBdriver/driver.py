@@ -85,7 +85,7 @@ def update_transaction(user, doc_id, date, transaction_type, category, dealer, p
 function to get the list of credit transactions whose paid status is not paid for a user
 '''
 def get_debt_list(user, offset, limit): 
-    db_result = list(db[user].find({'$and':[{'type':'dedit'},{'paid_status':'false'}]}).skip(offset).limit(limit))
+    db_result = list(db[user].find({'$and':[{'type':'debit'},{'paid_status':'false'}]}).skip(offset).limit(limit))
     return db_result
 
 '''
