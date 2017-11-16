@@ -123,7 +123,9 @@ def update_owe(user, doc_id):
 function that gets the unique list of all categories of transactions for a user
 '''
 def get_all_categories(user): 
-    db_result = db[user].distinct('categories')
+    db_result = list(db[user].distinct('category'))
+    if "" in db_result:
+        db_result.remove("")
     return db_result
 
 '''
