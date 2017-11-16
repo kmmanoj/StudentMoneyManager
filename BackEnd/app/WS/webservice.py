@@ -132,14 +132,14 @@ def get_transaction_by_id(doc_id):
 API to update the transaction record for a user
 given the previous transaction details
 '''
-@app.route('/transactions/edit', methods = methods_list)
-def update_transactions():
+@app.route('/transactions/edit/<doc_id>', methods = methods_list)
+def update_transactions(doc_id):
     if request.method == 'POST':
         if 'User' not in request.headers.keys():
             return missing_header_error
         user = request.headers.get('User')
         data = __to_dict(loads(request.json))
-        return dumps(api.update_transactions(user, data))
+        return dumps(api.update_transactions(user, doc_id, data))
     else:
         return method_not_allowed
 

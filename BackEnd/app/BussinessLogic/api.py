@@ -132,7 +132,7 @@ def get_transaction_by_id(user, doc_id):
 '''
 function to update the transaction given the new data
 '''
-def update_transactions(user, data):
+def update_transactions(user, doc_id, data):
     response = dict()
     response['status'] = 200
     response['response'] = dict()
@@ -150,7 +150,7 @@ def update_transactions(user, data):
         response['response']['status'] = None
         response['error'] = 'Missing detail : '+missing_key
     else:
-        response['response']['status'] = driver.update_transaction(user, date=data['date'], transaction_type=data['type'], category=data['category'], dealer=data['dealer'], paid_status=data['paid_status'], amount = data['amount'])
+        response['response']['status'] = driver.update_transaction(user, doc_id=doc_id, date=data['date'], transaction_type=data['type'], category=data['category'], dealer=data['dealer'], paid_status=data['paid_status'], amount = data['amount'])
         response['error'] = None
     return response
 
