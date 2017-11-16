@@ -129,7 +129,8 @@
 {
 	status : int,
 	error : string,
-	response :{
+	response 
+	{
 		data:
 		{
 			date : date,
