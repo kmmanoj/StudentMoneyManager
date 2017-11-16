@@ -129,14 +129,16 @@
 {
 	status : int,
 	error : string,
-	data:
-	{
-		date : date,
-		type : string,
-		category : string,
-		dealer : string,
-		paid_status : boolean,
-		amount : int
+	response :{
+		data:
+		{
+			date : date,
+			type : string,
+			category : string,
+			dealer : string,
+			paid_status : boolean,
+			amount : int
+		}
 	}
 }
 </pre>
