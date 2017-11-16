@@ -85,7 +85,7 @@ def update_transaction(user, doc_id, date, transaction_type, category, dealer, p
 function to get the list of credit transactions whose paid status is not paid for a user
 '''
 def get_debt_list(user, offset, limit): 
-    db_result = list(db[user].find({'$and':[{'type':'credit'},{'paid_status':False}]}).skip(offset).limit(limit))
+    db_result = list(db[user].find({'$and':[{'type':'credit'},{'paid_status':'false'}]}).skip(offset).limit(limit))
     return db_result
 
 '''
@@ -94,7 +94,7 @@ function to update the paid status of a transaction given the document id for a 
 def update_debt(user, doc_id):
     record = get_transaction_by_id(user, doc_id)
     if 'paid_status' not in record.keys(): return False
-    record['paid_status'] = True
+    record['paid_status'] = 'true'
     del record['_id']
     status = dict(db[user].update({'_id':doc_id}, record, {'upsert':True}))
     if status : return True
@@ -104,7 +104,7 @@ def update_debt(user, doc_id):
 function to get the list of debit transactions whose paid status is not paid for a user
 '''
 def get_owe_list(user, offset, limit): 
-    db_result = list(db[user].find({'$and': [{'type':'credit'},{'paid_status':False}]}).skip(offset).limit(limit))
+    db_result = list(db[user].find({'$and': [{'type':'credit'},{'paid_status':'false'}]}).skip(offset).limit(limit))
     return db_result
 
 '''
@@ -113,7 +113,7 @@ function to update the paid status of a transaction given the document id for a 
 def update_owe(user, doc_id):
     record = get_transaction_by_id(user, doc_id)
     if 'paid_status' not in record.keys(): return False
-    record['paid_status'] = True
+    record['paid_status'] = 'true'
     del record['_id']
     status = dict(db[user].update({'_id':doc_id}, record, {'upsert':True}))
     if status : return True
