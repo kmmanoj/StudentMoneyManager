@@ -265,7 +265,7 @@ def get_debit_transactions(user, offset, limit):
     response = dict()
     response['status'] = 200
     response['response'] = dict()
-    response['response']['data'] = driver.get_transactions_of_type(user, offset, limit,'dedit')
+    response['response']['data'] = driver.get_transactions_of_type(user, offset, limit,'debit')
     response['error'] = None
     return response
 
