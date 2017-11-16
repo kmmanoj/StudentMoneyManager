@@ -153,7 +153,6 @@ def get_debt_list(offset, limit):
         if 'User' not in request.headers.keys():
             return missing_header_error
         user = request.headers.get('User')
-        data = __to_dict(loads(request.json))
         return dumps(api.get_debt_list(user, offset, limit))
     else:
         return method_not_allowed
