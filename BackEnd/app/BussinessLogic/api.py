@@ -224,6 +224,7 @@ def get_summary_by_category(user):
     response = dict()
     response['status'] = 200
     response['response'] = dict()
+    response['response']['data'] = dict()
     categories = driver.get_all_categories(user)
     for category in categories:
         response['response']['data'][category] = driver.get_summary_by_category(user, category)
@@ -237,6 +238,7 @@ def get_summary_by_weekdays(user):
     response = dict()
     response['status'] = 200
     response['response'] = dict()
+    response['response']['data'] = dict()
     weekdays = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
     for day in weekdays:
         response['response']['data'][day] = driver.get_summary_by_weekday(user, day)
