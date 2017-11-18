@@ -32,7 +32,7 @@ function update()
   }
   xhr1 = new XMLHttpRequest();
   xhr1.onreadystatechange = result; 
-  xhr1.open("POST", "js/update.php", true);
+  xhr1.open("POST", "update.php", true);
   xhr1.setRequestHeader("Content-type", "application/json");
   //obj1 = JSON.stringify({name : name.value, dob: dob.value, username : uname.value, password : pwd.value});
   obj2 = JSON.stringify(obj1);
@@ -69,7 +69,7 @@ function get_transaction_details()
   xhr2 = new XMLHttpRequest();
   xhr2.onreadystatechange = showTransaction;
   //window.alert("js/getDetails.php?id="+id.value); 
-  url = "js/getValues.php?id="+id.value;
+  url = "getValues.php?id="+id.value;
   xhr2.open("GET", url, true);
   xhr2.send();
 

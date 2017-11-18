@@ -24,7 +24,7 @@ function loginResult()
 			xhr2 = new XMLHttpRequest();
 			xhr2.onreadystatechange = startSesh;
 			window.alert("Before"+uname.value);
-			xhr2.open("GET", "http://localhost/FrontEnd/js/startSesh.php?uname="+uname.value, true);
+			xhr2.open("GET", "startSesh.php?uname="+uname.value, true);
 			xhr2.send();
 
 		}
@@ -86,7 +86,7 @@ function register()
 		xhr.onreadystatechange = resultDisplay; 
 		
 		//xhr.open("POST", "http://localhost:5000/register", true);
-		xhr.open("POST", "js/register.php", true);
+		xhr.open("POST", "register.php", true);
 		xhr.setRequestHeader("Content-type", "application/json");
 		//obj1 = JSON.stringify({name : name.value, dob: dob.value, username : uname.value, password : pwd.value});
 		obj2 = JSON.stringify(obj1);

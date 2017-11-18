@@ -15,9 +15,7 @@ function add()
   else
     paid_status_value = false;
 
-  //window.alert(paid_status_value);
-
-  amount = document.getElementById("amount");
+ amount = document.getElementById("amount");
   
   obj1 = 
   {
@@ -30,12 +28,8 @@ function add()
   }
   xhr = new XMLHttpRequest();
   xhr.onreadystatechange = result; 
-  //xhr.open("GET", "authenticate.php?uname="+uname, true);
-  //make this php file
-  //in php file extract post, add header to request and send using file_get_contents
-  //add header using http_...
-  //header: username = $_uname
-  xhr.open("POST", "js/send.php", true);
+  
+  xhr.open("POST", "send.php", true);
   xhr.setRequestHeader("Content-type", "application/json");
   //obj1 = JSON.stringify({name : name.value, dob: dob.value, username : uname.value, password : pwd.value});
   obj2 = JSON.stringify(obj1);
