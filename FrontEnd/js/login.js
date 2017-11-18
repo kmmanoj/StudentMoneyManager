@@ -122,6 +122,6 @@ function resultDisplay()
 			t = document.createTextNode(jsonObj.error);
 		}
 		h1.appendChild(t);
-		div1.append(h1);
+		div1.appendChild(h1);
 	}
 }

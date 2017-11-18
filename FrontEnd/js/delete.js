@@ -22,7 +22,7 @@ function displayDetails()
 					cbx.id = obj1._id.$oid;
 					cbx.name = cbx.id;
 
-					cell0.append(cbx); 
+					cell0.appendChild(cbx); 
 
 					cell1 = tr1.insertCell(1);
 					cell1.innerHTML = obj1.date;
@@ -45,7 +45,7 @@ function displayDetails()
 						cbx2.checked=true;
 					else
 						cbx2.checked=false;
-					cell5.append(cbx2);
+					cell5.appendChild(cbx2);
 
 					cell6 = tr1.insertCell(6);
 					cell6.innerHTML = obj1.amount;
