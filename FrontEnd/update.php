@@ -6,7 +6,7 @@ parse_str(file_get_contents("php://input"), $data);
 $id = $data['id'];
 unset($data['id']);
 $request_url = "http://localhost:5000/transactions/edit/$id";
-$request_method = "GET";
+$request_method = "POST";
 
 header("Content-type:application/json");
 $data    = json_encode($data);
