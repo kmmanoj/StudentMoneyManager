@@ -11,7 +11,7 @@ session_start();
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
     </head>
-    <body>
+    <body onload="getAll()">
     <div class="row">
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -102,5 +102,6 @@ session_start();
                 </tr>
             </table>
         </div>
+        <script type="text/javascript" src="js/getAll.js"></script>
     </body>
 </html>

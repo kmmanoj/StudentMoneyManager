@@ -1,26 +1,29 @@
 function displayDetails()
 {
+	
 	if(this.readyState == 4 && this.status == 200)
 	{
+		window.alert("came to displayDetails");
 		jsonObj = JSON.parse(this.responseText);
+		console.log(jsonObj);
 		if(jsonObj.error == null)
 		{
 			if(jsonObj.status)
 			{
 				tab1 = document.getElementById("tab1");
-				for(var i=0; i<jsonObj.response.length; i++)
+				for(var i=0; i<jsonObj.response.data.length; i++)
 				{
-					obj1 = jsonObj.response[i];
-					tr1 = tab1.insertRow(i);
+					obj1 = jsonObj.response.data[i];
+					tr1 = tab1.insertRow(i+1);
 					
-					cell1 = tr1.insertCell(0);
+					cell0 = tr1.insertCell(0);
 
 					cbx = document.createElement("input");
 					cbx.type = "checkbox";
 					cbx.id = obj1._id.$oid;
 					cbx.name = cbx.id;
 
-					cell0.innerHTML = cbx; 
+					cell0.append(cbx); 
 
 					cell1 = tr1.insertCell(1);
 					cell1.innerHTML = obj1.date;
@@ -43,7 +46,7 @@ function displayDetails()
 						cbx2.checked=true;
 					else
 						cbx2.checked=false;
-					cell5.innerHTML = cbx2;
+					cell5.append(cbx2);
 
 					cell6 = tr1.insertCell(6);
 					cell6.innerHTML = obj1.amount;

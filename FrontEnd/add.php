@@ -19,8 +19,15 @@ session_start();
         </label><br/>
         <label>Category:
             <select id="category">
-                <option id="category1">Category 1</option>
-                <option id="category2">Category 2</option>
+                <option id="Food">Food</option>
+                <option id="Misc">Misc</option>
+                <option id="Study">Study</option>
+                <option id="Cosmetics">Cosmetics</option>
+                <option id="Entertainment">Entertainment</option>
+                <option id="personal">Personal</option>
+                <option id="travel">Travel</option>
+
+
             </select>
         </label>
         <label>
