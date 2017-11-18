@@ -77,7 +77,7 @@ session_start();
           </nav>
         </div> <!-- nav bar ends here -->
         <h1>Delete transactions</h1>
-        <form class="form" action="deleteThese.php">
+        <form class="form" action="deleteThese.php" method="POST">
             <div class="table-responsive">
                 <table class="table table-bordered table-striped" id="tab1">
                     <th>Select</th>
@@ -89,7 +89,7 @@ session_start();
                     <th>Amount</th>
                 </table>
             </div>
-             <button class="btn btn-primary" type="submit" >Delete transaction(s)</button>
+             <button name="delete" class="btn btn-primary" type="submit" >Delete transaction(s)</button>
         </form>
         <script type="text/javascript" src="js/delete.js"></script>
         <script type="text/javascript" src="js/getAll.js"></script>
