@@ -2,12 +2,12 @@ function login()
 {
 	uname = document.getElementById("logUname");
 	pwd = document.getElementById("logPwd");
-	xhr = new XMLHttpRequest();
-	xhr.onreadystatechange = loginResult; 
+	xhr1 = new XMLHttpRequest();
+	xhr1.onreadystatechange = loginResult; 
 	var url = "http://localhost:5000/auth/" +uname.value+"/"+pwd.value;
-	//window.alert(url);
-	xhr.open("GET", url, true);
-	xhr.send();
+	//url = "js/login.php?uname=" +uname.value+"&pwd="+pwd.value; 
+	xhr1.open("GET", url, true);
+	xhr1.send();
 }
 function loginResult()
 {
@@ -15,17 +15,17 @@ function loginResult()
 	loginDiv.innerHTML = "";
 	if(this.readyState == 4 && this.status == 200)
 	{
-		jsonObj = JSON.parse(xhr.responseText);
-    console.log(jsonObj);
+		jsonObj = JSON.parse(xhr1.responseText);
+    	console.log(jsonObj);
 		if(jsonObj.response.authenticate)
 		{
 			t = document.createTextNode("Logged in Successfully!");
 			//start session and create php session variable
-			xhr = new XMLHttpRequest();
-			xhr.onreadystatechange = startSesh;
-			xhr.open("GET", "startSesh.php?uname="+uname.value, true);
-		  	xhr.setRequestHeader("username", uname.value);
-			xhr.send();
+			xhr2 = new XMLHttpRequest();
+			xhr2.onreadystatechange = startSesh;
+			window.alert("Before"+uname.value);
+			xhr2.open("GET", "http://localhost/FrontEnd/js/startSesh.php?uname="+uname.value, true);
+			xhr2.send();
 
 		}
 		else
@@ -42,9 +42,9 @@ function startSesh()
 {
 	if(this.readyState == 4 && this.status == 200)
 	{
-		//window.alert(this.reponse);
-    	//redirect to another page --> home.php
-    	window.location.href
+		//console.log(this.responseText);
+		//delay of 6 seconds
+    	window.location.href = "home.php";
 	}
 }
 function check()
@@ -84,8 +84,9 @@ function register()
 
 		xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = resultDisplay; 
-		//xhr.open("GET", "authenticate.php?uname="+uname, true);
-		xhr.open("POST", "http://localhost:5000/register", true);
+		
+		//xhr.open("POST", "http://localhost:5000/register", true);
+		xhr.open("POST", "js/register.php", true);
 		xhr.setRequestHeader("Content-type", "application/json");
 		//obj1 = JSON.stringify({name : name.value, dob: dob.value, username : uname.value, password : pwd.value});
 		obj2 = JSON.stringify(obj1);
