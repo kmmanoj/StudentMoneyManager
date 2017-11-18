@@ -35,7 +35,7 @@ function loginResult()
 		
 		h2 = document.createElement("h2");
 		h2.appendChild(t);
-		loginDiv.append(h2);
+		loginDiv.appendChild(h2);
 	}
 }
 function startSesh()
@@ -47,7 +47,7 @@ function startSesh()
 		h3 = document.createElement("h3");
     	t = document.createTextNode("Redirecting...");
     	h3.appendChild(t);
-    	loginDiv.append(h3);
+    	loginDiv.appendChild(h3);
 
 		setTimeout(redirect, 3000);
     	
