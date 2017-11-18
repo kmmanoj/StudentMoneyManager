@@ -76,39 +76,41 @@ session_start();
         <div class="container">
         <div class="panel-group">
 
-            <div class="panel panel-default">
+            <div class="panel panel-info">
                 <div class="panel-heading">Edit Transaction</div>
                 <div class="panel-body">
-                    <label>Id : <input id="id" type="text" value="" disabled=""/></label><br/>s
-                    <label>Date : <input id="date" type="date"/></label><br/>
+                <form class="form" action="update.php" method="POST">
+                    <label>Id : <input name="id" id="id" type="text" disabled/></label><br/>
+                   <label>Date : <input name="date" id="date" type="text" placeholder="dd-mm-yyyy" /></label><br/>
                     <label>Type :
-                        <select id="type">
-                            <option id="credit">Credit</option>
-                            <option id="debit">Debit</option>
-                            <option id="save">Savings</option>
+                        <select id="type" name="type">
+                            <option value="credit" id="credit">Credit</option>
+                            <option value="debit" id="debit">Debit</option>
+                            <option value="save" id="save">Savings</option>
                         </select>
                     </label><br/>
                     <label>Category:
-                        <select id="category">
-                            <option id="Food">Food</option>
-                            <option id="Misc">Misc</option>
-                            <option id="Study">Study</option>
-                            <option id="Cosmetics">Cosmetics</option>
-                            <option id="Entertainment">Entertainment</option>
-                            <option id="personal">Personal</option>
-                            <option id="travel">Travel</option>
+                        <select name="category" id="category">
+                            <option id="Food" value="food">Food</option>
+                            <option id="Misc" value="misc">Misc</option>
+                            <option id="Study" value="study">Study</option>
+                            <option id="Cosmetics" value="cosmetics">Cosmetics</option>
+                            <option id="Entertainment" value="entertainment">Entertainment</option>
+                            <option id="personal" id="personal"="personal">Personal</option>
+                            <option id="travel" value="travel">Travel</option>
                         </select>
                     </label>
                    <label>
-                        Dealer : <input id="dealer" type="text" placeholder="Dealer"/><br/>
+                        Dealer : <input id="dealer" name="dealer" type="text" placeholder="Dealer"/><br/>
                     </label>
-                     <label>Paid Status : <input id="paid_status" type="checkbox"/></label><br/>
-                    <label>Amount <input id="amount" type="number"/> </label><br/>
-                    <button onclick="update()">Update transaction</button>
+                     <label>Paid Status : <input name="paid_status" id="paid_status" value="paid_status"type="checkbox"/></label><br/>
+                    <label>Amount <input name="amount" id="amount" type="number"/> </label><br/>
+                    <button class="btn btn-success" name="update" type="submit">Update transaction</button>
                     <div id="result"></div>
+                    </form>
                 </div> <!--body 1 ends here -->
             </div> <!--panel default -->
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
             <div class="panel-heading"> Select Transaction To Edit </div>
             <div class="panel-body">
                 <div class="table-responsive">

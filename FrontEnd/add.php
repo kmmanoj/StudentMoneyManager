@@ -9,7 +9,7 @@ session_start();
     </head>
     <body>
         <h1>Add Transaction</h1>
-        <label>Date : <input id="date" type="date"/></label><br/>
+        <label>Date : <input id="date" type="text" placeholder="dd-mm-yyyy" /></label><br/>
         <label>type :
             <select id="type">
                 <option id="credit">Credit</option>
