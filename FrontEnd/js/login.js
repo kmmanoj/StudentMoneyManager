@@ -5,7 +5,7 @@ function login()
 	xhr1 = new XMLHttpRequest();
 	xhr1.onreadystatechange = loginResult; 
 	var url = "http://localhost:5000/auth/" +uname.value+"/"+pwd.value;
-	//url = "js/login.php?uname=" +uname.value+"&pwd="+pwd.value; 
+	//url = "authenticate.php?uname=" +uname.value+"&pwd="+pwd.value; 
 	xhr1.open("GET", url, true);
 	xhr1.send();
 }
@@ -23,7 +23,7 @@ function loginResult()
 			//start session and create php session variable
 			xhr2 = new XMLHttpRequest();
 			xhr2.onreadystatechange = startSesh;
-			window.alert("Before"+uname.value);
+			
 			xhr2.open("GET", "startSesh.php?uname="+uname.value, true);
 			xhr2.send();
 
@@ -43,9 +43,20 @@ function startSesh()
 	if(this.readyState == 4 && this.status == 200)
 	{
 		//console.log(this.responseText);
-		//delay of 6 seconds
-    	window.location.href = "home.php";
+		//add delay of 3 seconds
+		h3 = document.createElement("h3");
+    	t = document.createTextNode("Redirecting...");
+    	h3.appendChild(t);
+    	loginDiv.append(h3);
+
+		setTimeout(redirect, 3000);
+    	
+    	
 	}
+}
+function redirect()
+{
+	window.location.href = "home.php";
 }
 function check()
 {
@@ -84,13 +95,9 @@ function register()
 
 		xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = resultDisplay; 
-		
-		//xhr.open("POST", "http://localhost:5000/register", true);
 		xhr.open("POST", "register.php", true);
 		xhr.setRequestHeader("Content-type", "application/json");
-		//obj1 = JSON.stringify({name : name.value, dob: dob.value, username : uname.value, password : pwd.value});
 		obj2 = JSON.stringify(obj1);
-    //window.alert(obj2);
 		xhr.send(obj2);
 	}
 	else

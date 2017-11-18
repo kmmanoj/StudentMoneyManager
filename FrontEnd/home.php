@@ -12,7 +12,7 @@ session_start();
         <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
-    	<div class="row">
+    <div class="row">
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">

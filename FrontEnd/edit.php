@@ -6,7 +6,7 @@ session_start();
     <head>
         <title>Edit Transaction</title>
     </head>
-    <body onload="get_transaction_details()">
+    <body onload="getAll()">
         <h1>Edit Transaction</h1>
         <label>Id : <input id="id" type="text" value="5a0d" disabled=""/></label><br/>s
         <label>Date : <input id="date" type="date"/></label><br/>
@@ -31,5 +31,6 @@ session_start();
         <button onclick="update()">Update transaction</button>
         <div id="result"></div>
         <script type="text/javascript" src="js/edit.js"></script>
+        <script type="text/javascript" src="js/getAll.js"></script>
     </body>
 </html>

@@ -64,17 +64,8 @@ function result()
   }
 }
 
-function get_transaction_details()
-{
-  xhr2 = new XMLHttpRequest();
-  xhr2.onreadystatechange = showTransaction;
-  //window.alert("js/getDetails.php?id="+id.value); 
-  url = "getValues.php?id="+id.value;
-  xhr2.open("GET", url, true);
-  xhr2.send();
 
-}
-function showTransaction()
+function displayDetails()
 {
   if(xhr2.readyState == 4 && xhr2.status == 200)
   {
