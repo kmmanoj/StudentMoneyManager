@@ -138,7 +138,7 @@ def update_transactions(doc_id):
         if 'User' not in request.headers.keys():
             return missing_header_error
         user = request.headers.get('User')
-        data = __to_dict(loads(request.json))
+        data = __to_dict(request.json)
         return dumps(api.update_transactions(user, doc_id, data))
     else:
         return method_not_allowed

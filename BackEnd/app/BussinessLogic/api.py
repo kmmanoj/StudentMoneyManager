@@ -143,9 +143,9 @@ def update_transactions(user, doc_id, data):
         if key not in data.keys():
             missing_key = key
             break
-    if str.lower(data['type']) not in types:
+    if str.lower(str(data['type'])) not in types:
         response['response']['status'] = None
-        response['error'] = 'Undefined transaction type : '+str.lower(data['type'])
+        response['error'] = 'Undefined transaction type : '+str.lower(str(data['type']))
     elif missing_key is not None:
         response['response']['status'] = None
         response['error'] = 'Missing detail : '+missing_key

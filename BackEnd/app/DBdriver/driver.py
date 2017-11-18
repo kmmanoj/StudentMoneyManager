@@ -77,7 +77,7 @@ function to update the transaction for a user whose id is given
 with the new values as specified in the parameters
 '''
 def update_transaction(user, doc_id, date, transaction_type, category, dealer, paid_status, amount):
-    db_result = dict(db[user].update({'_id':ObjectId(doc_id)}, {'date':date, 'type':transaction_type, 'category':category, 'dealer':dealer, 'paid_status':paid_status, 'amount':amount},{'upsert':True}))
+    db_result = dict(db[user].update({'_id':ObjectId(doc_id)}, {'date':date, 'type':transaction_type, 'category':category, 'dealer':dealer, 'paid_status':paid_status, 'amount':amount},upsert=True))
     if db_result['n'] != 0: return True
     else: return False
 
