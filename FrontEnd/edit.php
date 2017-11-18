@@ -8,7 +8,7 @@ session_start();
     </head>
     <body onload="getAll()">
         <h1>Edit Transaction</h1>
-        <label>Id : <input id="id" type="text" value="5a0d" disabled=""/></label><br/>s
+        <label>Id : <input id="id" type="text" value="" disabled=""/></label><br/>s
         <label>Date : <input id="date" type="date"/></label><br/>
         <label>Type :
             <select id="type">

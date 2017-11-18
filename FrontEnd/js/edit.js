@@ -4,7 +4,6 @@ function update()
   type = document.getElementById("type"); //dropdown
   type_value = type.options[type.selectedIndex].text;
   id = document.getElementById("id");
-  //window.alert(type_value);
 
   category = document.getElementById("category"); //dropdown
   category_value = category.options[category.selectedIndex].text;
@@ -16,7 +15,6 @@ function update()
   else
     paid_status_value = false;
 
-  //window.alert(paid_status_value);
 
   amount = document.getElementById("amount");
   
@@ -47,7 +45,6 @@ function result()
   {
  
     jsonObj = JSON.parse(xhr.response);
-    //window.alert(jsonObj.status);
     if(jsonObj.error == null)
     {
       if(jsonObj.response.status)
@@ -69,7 +66,6 @@ function displayDetails()
 {
   if(xhr2.readyState == 4 && xhr2.status == 200)
   {
-    //window.alert(xhr2.reponseText);
     // jsonObj = JSON.parse(xhr2.reponse);
     // if(jsonObj.error == null)
     // {

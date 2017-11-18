@@ -76,9 +76,7 @@ function check()
 function register()
 {
 	rname = document.getElementById("regName");
-	//window.alert(rname.value);
 	uname = document.getElementById("regUname");
-	//window.alert(uname.value);
 	pwd = document.getElementById("regPwd");
 	pwd2 = document.getElementById("regPwd2");
 	dob = document.getElementById("dob");

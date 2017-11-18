@@ -15,28 +15,19 @@ function displayDetails()
 					obj1 = jsonObj.response.data[i];
 					tr1 = tab1.insertRow(i+1);
 					
-					cell0 = tr1.insertCell(0);
-
-					cbx = document.createElement("input");
-					cbx.type = "checkbox";
-					cbx.id = obj1._id.$oid;
-					cbx.name = cbx.id;
-
-					cell0.append(cbx); 
-
-					cell1 = tr1.insertCell(1);
+					cell1 = tr1.insertCell(0);
 					cell1.innerHTML = obj1.date;
 
-					cell2 = tr1.insertCell(2);
+					cell2 = tr1.insertCell(1);
 					cell2.innerHTML = obj1.type;
 
-					cell3 = tr1.insertCell(3);
+					cell3 = tr1.insertCell(2);
 					cell3.innerHTML = obj1.category;
 
-					cell4 = tr1.insertCell(4);
+					cell4 = tr1.insertCell(3);
 					cell4.innerHTML = obj1.dealer;
 
-					cell5 = tr1.insertCell(5);
+					cell5 = tr1.insertCell(4);
 					cbx2 = document.createElement("input");
 					cbx2.type="checkbox";
 					cbx2.disabled=true;
@@ -47,7 +38,7 @@ function displayDetails()
 						cbx2.checked=false;
 					cell5.append(cbx2);
 
-					cell6 = tr1.insertCell(6);
+					cell6 = tr1.insertCell(5);
 					cell6.innerHTML = obj1.amount;
 				}
 			}

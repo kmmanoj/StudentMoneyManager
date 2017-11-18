@@ -82,26 +82,19 @@ session_start();
         <br/>
         <button><a href="pie_chart.php">Pie chart</a></button>
         <button><a href="line_graph.php">Line graph</a></button>
-        <div>
-            <table border="1">
-                <th>Transaction id</th>
+        <h1>Delete transactions</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped" id="tab1">
+                <th>Date</th>
+                <th>Type</th>
+                <th>Category</th>
                 <th>Dealer</th>
-                <th>..</th>
+                <th>Paid Status</th>
                 <th>Amount</th>
-                <tr>
-                    <td>1</td>
-                    <td>dealer1</td>
-                    <td>..</td>
-                    <td>100</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>dealer2</td>
-                    <td>..</td>
-                    <td>120</td>
-                </tr>
             </table>
         </div>
+
+         <script type="text/javascript" src="js/home.js"></script>
         <script type="text/javascript" src="js/getAll.js"></script>
     </body>
 </html>

@@ -3,13 +3,11 @@ function add()
   date = document.getElementById("date");
   type = document.getElementById("type"); //dropdown
   type_value = type.options[type.selectedIndex].text;
-  //window.alert(type_value);
 
   category = document.getElementById("category"); //dropdown
   category_value = category.options[category.selectedIndex].text;
 
   dealer = document.getElementById("dealer");
-  //paid_status = document.getElementById("paid_status"); //checkbox
   if(document.getElementById("paid_status").checked)
     paid_status_value = true;
   else
@@ -31,7 +29,6 @@ function add()
   
   xhr.open("POST", "send.php", true);
   xhr.setRequestHeader("Content-type", "application/json");
-  //obj1 = JSON.stringify({name : name.value, dob: dob.value, username : uname.value, password : pwd.value});
   obj2 = JSON.stringify(obj1);
   xhr.send(obj2);
 
