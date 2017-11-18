@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>
-    Student Money manager
-    </title>
+    <title>Student Money Manager</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <style>
+    	body{
+
+    		background-color: #ADD8E6;
+    		background-image: url('css/img/wall2.jpg');
+    		background-position: center;
+    		background-size: 100%;
+    		background-repeat: no-repeat;
+    		
+    	}
+    	.set-width{
+    		width: 220px;
+    	}
+    	.jumbotron{
+    		background: rgba(192,192,192, 0.8);
+    		padding-top: 30px;
+			padding-bottom:30px;
+			height:580px;
+    	}
+
+    </style>
   </head>
   <body>  
     <div class="row">
@@ -48,63 +67,41 @@
         </div><!-- ends container-fluid -->
       </nav>
     </div> <!-- nav bar row ends here -->
-   
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <div class="panel panel-login">
-            <div class="panel-heading">
-              <div class="row">
-                <div class="col-xs-6">
-                  <a href="#" class="active" id="login-form-link">Login</a>
-                </div>
-                <div class="col-xs-6">
-                  <a href="#" id="register-form-link">Register</a>
-                </div>
-              </div> <hr>
-            </div> <!-- panel heading ends here -->
-        
-          <div class="panel-body">
-              <div class="col-lg-12">
-                <div class="row">
-                <input id="logUname" name="uname" class="form-control-short" type="text" placeholder="username" required="" autofocus="" />
-                </div>
-                <div class="row">
-                  <input id="logPwd" class="form-control-short" type="password" placeholder="Password" required="" size="50%"/>
-                </div>
-                <div class="row">
-                  <div class="col-sm-6 col-sm-offset-3">
-                  </div>
-                    <button class="btn btn-lg btn-block btn-success"  onclick = "login()">Login</button> 
-                 </div> 
-              </div>
-            </div> 
-        
-        
-  
-      </div>
-      
-      <div id="loginDiv"> </div>
-      </center>
-      </div>
-    </div>
-    <div class="jumbotron">
-    <center>
-    <h1>
-    Register
-    </h1> <br/>
-    <div>
-    <label>Name: <input id="regName" type="text" placeholder="name" required="required"/>  </label> <br/> <br/>
-    <label> Username: <input id="regUname" type="text" placeholder="username" required="required"/></label><br/> <br/>
-    <label>Date of birth: <input id="dob" type="date" placeholder="date of birth" required="required"/></label><br/> <br/>
-    <label>Password: <input id="regPwd" type="password" placeholder="password" onkeyup="check()" required="required"/> </label><br/> <br/>
-    <label>Confirm Password: <input id="regPwd2" type="password" placeholder="re-password" onkeyup="check()" required="required"/>
-    <span id="message"></span> </label><br/> <br/>
+   <center>
+	<div class="container bgImage">
+	<div class="jumbotron">
+		<ul class="nav nav-pills nav-fill cust-color">
+       		<li class="nav-item active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">Login</a></li>
+       		<li class="nav-item"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">Register</a></li>  
+       	</ul>  <hr>  
+        <div class="tab-content">
+        	<div role="tabpanel" class="tab-pane active" id="1">
+				<input id="logUname" name="uname" class="form-control set-width" type="text" placeholder="Enter Username" required="" autofocus="" />
+				<br/>
+				<input id="logPwd" class="form-control set-width" type="password" placeholder="Enter Password" required="" />
+				<br/>
+				<button class="btn btn-lg btn-primary"  onclick = "login()">Login</button> 
+				<div id="loginDiv"> </div>
+  			</div>
+  			<div role="tabpanel" class="tab-pane" id="2">
+				<input id="regName" class="form-control set-width" type="text" placeholder="Enter name" required="required"/> <br/>
+				<input id="regUname" class="form-control set-width" type="text" placeholder="Enter username" required="required"/></label><br/>				
+				<input id="dob" class="form-control set-width" type="text" placeholder="Enter DOB: dd-mm-yyyy" required="required"/> <br/>
+				<input id="regPwd" class="form-control set-width" type="password" placeholder="Enter password" onkeyup="check()" required="required"/><br/>
+				<input id="regPwd2" type="password" class="form-control set-width" placeholder="Confirm password" onkeyup="check()" required="required"/>
+				<span id="message"></span> </label><br/>
 
-    <button class="btn-primary" onclick="register()">Register</button>
-    </div>
-    <div id="displayRes"></div>
-    </center>
+				<button class="btn btn-lg btn-primary" onclick="register()">Register</button>
+				<div id="displayRes"></div>
+			</div>
+
+		</div>
+	</div> <!-- jumbotron ends here -->
+	</div> <!-- container ends here -->
+	
+	</center>
+
+
     <script type="text/javascript" src="js/login.js"></script>
   </body>
 </html>

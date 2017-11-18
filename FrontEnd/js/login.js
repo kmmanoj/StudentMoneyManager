@@ -114,7 +114,8 @@ function resultDisplay()
 		jsonObj = JSON.parse(this.responseText);
 		if(jsonObj.response.status == true)
 		{
-			t = document.createTextNode("Registered Successfully!");
+			t = document.createTextNode("Registered Successfully! Redirecting...");
+			setTimeout(goToLogin, 3000);
 		}
 		else
 		{
@@ -123,5 +124,13 @@ function resultDisplay()
 		}
 		h1.appendChild(t);
 		div1.appendChild(h1);
+
 	}
+}
+
+function goToLogin()
+{
+	window.location.href = "index.html#1";
+	div1.innerHTML = "";
+	loginDiv.innerHTML = "";
 }
