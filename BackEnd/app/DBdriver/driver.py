@@ -143,9 +143,9 @@ function to get the summary of credit, debit and save transactions for a user gr
 def get_summary_by_weekday(user, day):
     db_result=list()
     for r in db[user].find():
-	d=datetime.strptime(r['date'], "%d-%m-%Y")
-	if calendar.day_name[d.weekday()]==day:
-	    db_result.append(r)
+        d=datetime.strptime(r['date'], "%d-%m-%Y")
+        if calendar.day_name[d.weekday()].lower()==day:
+            db_result.append(r)
     return db_result
 
 
