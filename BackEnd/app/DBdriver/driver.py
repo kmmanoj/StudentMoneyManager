@@ -131,9 +131,9 @@ def get_all_categories(user):
 '''
 function to get the summary credit, debit and save transactions for a user grouped by category
 '''
-def get_summary_by_category(user, category): 
-    return list()
-
+def get_summary_by_category(user, category):
+	db_result=list(db[user].find({'category':category}))
+	return db_result
 '''
 function to get the summary of credit, debit and save transactions for a user grouped by weekdays
 '''
