@@ -135,7 +135,7 @@ function to get the summary credit, debit and save transactions for a user group
 '''
 def get_summary_by_category(user, category):
     expense = 0
-    for r in db[user].find({'category':category})):
+    for r in db[user].find({'category':category}):
         if r['type'] == 'credit':
             expense += r['amount']
         elif r['type'] == 'debit':
