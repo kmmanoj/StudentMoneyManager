@@ -7,7 +7,7 @@ Date : 8 November 2017
 '''
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-import calandar
+import calendar
 from datetime import datetime
 host = 'localhost:27017'
 db = MongoClient(host)['StudentMoneyManager']
