@@ -141,12 +141,12 @@ def get_summary_by_category(user, category):
 function to get the summary of credit, debit and save transactions for a user grouped by weekdays
 '''
 def get_summary_by_weekday(user, day):
-	db_result=list()
-	for r in db[user].find():
-		d=datetime.strptime(r['date'], "%d-%m-%Y")
-		if calendar.day_name[d.weekday()]==day:
-			db_result.append(r)
-	return db_result
+    db_result=list()
+    for r in db[user].find():
+	d=datetime.strptime(r['date'], "%d-%m-%Y")
+	if calendar.day_name[d.weekday()]==day:
+	    db_result.append(r)
+    return db_result
 
 
 '''
