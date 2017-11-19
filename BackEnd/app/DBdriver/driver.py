@@ -134,18 +134,36 @@ def get_all_categories(user):
 function to get the summary credit, debit and save transactions for a user grouped by category
 '''
 def get_summary_by_category(user, category):
-    db_result=list(db[user].find({'category':category}))
+    expense = 0
+    for r in db[user].find({'category':category})):
+        if r['type'] == 'credit':
+            expense += r['amount']
+        elif r['type'] == 'debit':
+            expense -= r['amount']
+        elif r['type'] == 'save':
+            expense += r['amount']
+    db_result = {'expense':expense}
     return db_result
 
 '''
 function to get the summary of credit, debit and save transactions for a user grouped by weekdays
 '''
 def get_summary_by_weekday(user, day):
-    db_result=list()
+    actual = 0
+    virtual = 0
     for r in db[user].find():
         d=datetime.strptime(r['date'], "%d-%m-%Y")
         if calendar.day_name[d.weekday()].lower()==day:
-            db_result.append(r)
+            if r['type'] == 'credit':
+                actual += r['amount']
+                virtual += r['amount']
+            elif r['type'] == 'debit':
+                actual -= r['amount']
+                virtual -= r['amount']
+            else:
+                actual += r['amount']
+                virtual -= r['amount']
+    db_result = {'actual':actual, 'virtual':virtual}
     return db_result
 
 
