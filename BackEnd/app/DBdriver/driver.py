@@ -7,6 +7,8 @@ Date : 8 November 2017
 '''
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import calandar
+from datetime import datetime
 host = 'localhost:27017'
 db = MongoClient(host)['StudentMoneyManager']
 
@@ -134,11 +136,18 @@ function to get the summary credit, debit and save transactions for a user group
 def get_summary_by_category(user, category):
     db_result=list(db[user].find({'category':category}))
     return db_result
+
 '''
 function to get the summary of credit, debit and save transactions for a user grouped by weekdays
 '''
-def get_summary_by_weekday(user, day): 
-    return list()
+def get_summary_by_weekday(user, day):
+	db_result=list()
+	for r in db[user].find():
+		d=datetime.strptime(r['date'], "%d-%m-%Y")
+		if calendar.day_name[d.weekday()]==day:
+			db_result.append(r)
+	return db_result
+
 
 '''
 function to get the list of transactions of a specific type for a user
