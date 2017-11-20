@@ -67,6 +67,10 @@ session_start();
                         <li role="separator" class="divider"></li>
                         <li><a href="delete.php"> Delete </a></li>
                         <li role="separator" class="divider"></li>
+                        <li><a href="debts.php"> Debts </a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="owes.php"> Owes </a></li>
+                        <li role="separator" class="divider"></li>
                         <li><a href="pie_chart.php"> View Pie Chart </a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="line_graph.php"> View Line Graph </a></li>

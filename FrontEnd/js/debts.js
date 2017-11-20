@@ -28,30 +28,13 @@ function displayDetails()
 					cell1.innerHTML = obj1.date;
 
 					cell2 = tr1.insertCell(2);
-					cell2.innerHTML = obj1.type;
+					cell2.innerHTML = obj1.category;
 
 					cell3 = tr1.insertCell(3);
-					cell3.innerHTML = obj1.category;
+					cell3.innerHTML = obj1.dealer;
 
 					cell4 = tr1.insertCell(4);
-					cell4.innerHTML = obj1.dealer;
-
-					cell5 = tr1.insertCell(5);
-					cbx2 = document.createElement("input");
-					cbx2.type="checkbox";
-					cbx2.disabled=true;
-					
-					if(obj1.paid_status=="true"){
-						cbx2.checked=true;
-						cell5.appendChild(cbx2);
-					}
-					else if(obj1.paid_status=="false"){
-						cbx2.checked=false;
-						cell5.appendChild(cbx2);
-					}
-
-					cell6 = tr1.insertCell(6);
-					cell6.innerHTML = obj1.amount;
+					cell4.innerHTML = obj1.amount;
 				}
 			}
 		}

@@ -32,11 +32,14 @@ function displayDetails()
 					cbx2.type="checkbox";
 					cbx2.disabled=true;
 					
-					if(obj1.paid_status)
+					if(obj1.paid_status=="true"){
 						cbx2.checked=true;
-					else
+						cell5.appendChild(cbx2);
+					}
+					else if(obj1.paid_status=="false"){
 						cbx2.checked=false;
-					cell5.appendChild(cbx2);
+						cell5.appendChild(cbx2);
+					}
 
 					cell6 = tr1.insertCell(5);
 					cell6.innerHTML = obj1.amount;
