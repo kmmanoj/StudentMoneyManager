@@ -169,14 +169,11 @@ def get_debt_list(user, offset, limit):
 '''
 function to update the status of specified debt list by id
 '''
-def update_debt_list(user, id_list): 
+def update_debt(user, doc_id): 
     response = dict()
     response['status'] = 200
-    count = 0
-    for doc_id in id_list:
-        count += driver.update_debt(user, doc_id)
     response['response'] = dict()
-    response['response']['count'] = count
+    response['response']['status'] = driver.update_debt(user, doc_id)
     response['error'] = None
     return response
 
@@ -195,14 +192,11 @@ def get_owe_list(user, offset, limit):
 '''
 function to update the status of specified owe list by id
 '''
-def update_owe_list(user, id_list): 
+def update_owe(user, doc_id): 
     response = dict()
     response['status'] = 200
-    count = 0
-    for doc_id in id_list:
-        count += driver.update_owe_list(user, id_list)
     response['response'] = dict()
-    response['response']['count'] = count
+    response['response']['status'] = driver.update_owe(user, doc_id)
     response['error'] = None
     return response
 

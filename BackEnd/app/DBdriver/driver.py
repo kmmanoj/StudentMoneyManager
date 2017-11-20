@@ -9,7 +9,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import calendar
 from datetime import datetime
-host = 'localhost:27017'
+host = '127.0.0.1:27017'
 db = MongoClient(host)['StudentMoneyManager']
 
 '''
@@ -98,7 +98,7 @@ def update_debt(user, doc_id):
     if 'paid_status' not in record.keys(): return False
     record['paid_status'] = 'true'
     del record['_id']
-    status = dict(db[user].update({'_id':doc_id}, record, {'upsert':True}))
+    status = dict(db[user].update({'_id':doc_id}, record, upsert=True))
     if status : return True
     else: return False
 
@@ -117,7 +117,7 @@ def update_owe(user, doc_id):
     if 'paid_status' not in record.keys(): return False
     record['paid_status'] = 'true'
     del record['_id']
-    status = dict(db[user].update({'_id':doc_id}, record, {'upsert':True}))
+    status = dict(db[user].update({'_id':doc_id}, record, upsert=True))
     if status : return True
     else: return False
 

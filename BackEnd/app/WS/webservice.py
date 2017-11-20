@@ -161,14 +161,13 @@ def get_debt_list(offset, limit):
 API to update the paid_status of the debts for a user
 given the transactions id list
 '''
-@app.route('/debts/update', methods = methods_list)
-def update_debt_list():
-    if request.method == 'POST':
+@app.route('/debts/update/<doc_id>', methods = methods_list)
+def update_debt(doc_id):
+    if request.method == 'GET':
         if 'User' not in request.headers.keys():
             return missing_header_error
         user = request.headers.get('User')
-        data = __to_dict(loads(request.json))
-        return dumps(api.update_debt_list(user, data))
+        return dumps(api.update_debt(user, doc_id))
     else:
         return method_not_allowed
 
@@ -190,14 +189,13 @@ def get_owe_list(offset, limit):
 API to update the paid_status of the owes for a user
 given the transactions id list
 '''
-@app.route('/owes/update', methods = methods_list)
-def update_owe_list():
-    if request.method == 'POST':
+@app.route('/owes/update/<doc_id>', methods = methods_list)
+def update_owe(doc_id):
+    if request.method == 'GET':
         if 'User' not in request.headers.keys():
             return missing_header_error
         user = request.headers.get('User')
-        data = __to_dict(loads(request.json))
-        return dumps(api.update_owe_list(user, data))
+        return dumps(api.update_owe(user, doc_id))
     else:
         return method_not_allowed
 
