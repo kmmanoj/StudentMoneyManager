@@ -7,6 +7,8 @@ Date : 8 November 2017
 '''
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import calendar
+from datetime import datetime
 host = 'localhost:27017'
 db = MongoClient(host)['StudentMoneyManager']
 
@@ -131,14 +133,39 @@ def get_all_categories(user):
 '''
 function to get the summary credit, debit and save transactions for a user grouped by category
 '''
-def get_summary_by_category(user, category): 
-    return list()
+def get_summary_by_category(user, category):
+    expense = 0
+    for r in db[user].find({'category':category}):
+        if r['type'] == 'credit':
+            expense += r['amount']
+        elif r['type'] == 'debit':
+            expense -= r['amount']
+        elif r['type'] == 'save':
+            expense += r['amount']
+    db_result = {'expense':expense}
+    return db_result
 
 '''
 function to get the summary of credit, debit and save transactions for a user grouped by weekdays
 '''
-def get_summary_by_weekday(user, day): 
-    return list()
+def get_summary_by_weekday(user, day):
+    actual = 0
+    virtual = 0
+    for r in db[user].find():
+        d=datetime.strptime(r['date'], "%d-%m-%Y")
+        if calendar.day_name[d.weekday()].lower()==day:
+            if r['type'] == 'credit':
+                actual += r['amount']
+                virtual += r['amount']
+            elif r['type'] == 'debit':
+                actual -= r['amount']
+                virtual -= r['amount']
+            else:
+                actual += r['amount']
+                virtual -= r['amount']
+    db_result = {'actual':actual, 'virtual':virtual}
+    return db_result
+
 
 '''
 function to get the list of transactions of a specific type for a user
