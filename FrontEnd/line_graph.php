@@ -10,7 +10,10 @@ session_start();
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
+      <script type = "text/javascript">
+         google.charts.load('current', {packages: ['corechart','line']});  
+      </script>
 
     </head>
     <body onload="getLine()">
@@ -74,10 +77,28 @@ session_start();
           </div><!-- navbar-collapse ends here -->
         </div><!-- ends container-fluid -->
       </nav>
-    </div> <!-- nav bar ends here -->
+    </div> <!-- nav bar ends here -->    
+    <div class="container">
+        <ul class="nav nav-tabs nav-fill">
+            <li class="nav-item active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">Credit Chart</a></li>
+            <li class="nav-item"><a href="#2" aria-controls="2" role="tab" data-toggle="tab">Debit Chart</a></li>  
+            <li class="nav-item"><a href="#3" aria-controls="3" role="tab" data-toggle="tab">Savings Chart</a></li>  
+        </ul>
         
-        <!-- use google charts API -->
-        <canvas height="200" width="200" style="border:1px solid black"></canvas>
-        <script type="text/javascript" src="line.js"></script>
+        <div class="tab-content">
+           
+                <div role="tabpanel" class="tab-pane active" id="1">
+                    <div id="chart1"></div>
+                </div>
+            <div role="tabpanel" class="tab-pane active" id="2">
+                <div id="chart2"></div>
+            </div>
+            <div role="tabpanel" class="tab-pane active" id="3">
+                <div id="chart3"></div>
+            </div>
+        </div>
+    </div>
+   
+    <script type="text/javascript" src="js/line.js"></script>
     </body>
 </html>

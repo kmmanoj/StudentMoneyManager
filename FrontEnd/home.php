@@ -96,10 +96,7 @@ session_start();
         </div><!-- ends container-fluid -->
       </nav>
     </div> <!-- nav bar ends here -->
-
-
-        
-        <div class="container">
+    <div class="container">
             <div class="row">
                 <h3 style="color:white; font-weight: 10px;">
                 Hi, <?php 
