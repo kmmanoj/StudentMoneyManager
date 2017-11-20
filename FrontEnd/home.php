@@ -10,6 +10,28 @@ session_start();
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <style type="text/css">
+            .btnLink{
+                text-decoration: none !important;
+                color: black;
+                font-weight: 10;
+            }
+            body{
+
+            background-color: #bebebe;
+            background-image: url('css/img/black4.jpg');
+            background-position: center;*/
+            background-size: 100%;
+            background-repeat: no-repeat;
+            
+        }
+            .allTransac{
+                height:400px;
+                overflow-x: scroll;
+                width:100%;
+
+            }
+        </style>
     </head>
     <body onload="getAll()">
 
@@ -76,26 +98,58 @@ session_start();
     </div> <!-- nav bar ends here -->
 
 
-        <h1>Hi, <?php echo $_SESSION['uname']?>!</h1>
-        <button><a href="add.php"> Add transaction </a></button>
-        <button><a href="delete.php">Delete transaction</a></button>
-        <button><a href="edit.php">Edit transaction</a></button>
-        <br/>
-        <button><a href="pie_chart.php">Pie chart</a></button>
-        <button><a href="line_graph.php">Line graph</a></button>
-        <h1>All transactions</h1>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped" id="tab1">
-                <th>Date</th>
-                <th>Type</th>
-                <th>Category</th>
-                <th>Dealer</th>
-                <th>Paid Status</th>
-                <th>Amount</th>
-            </table>
+        
+        <div class="container">
+            <div class="row">
+                <h3 style="color:white; font-weight: 10px;">
+                Hi, <?php 
+                        if ($_SESSION['uname'])
+                            echo $_SESSION['uname'];
+                        else
+                            echo "Guest";?>!
+                </h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2">
+                    <button class="btn btn-primary"><a class="btnLink" href="add.php"> Add transaction </a></button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-success"><a class="btnLink" href="delete.php">Delete transaction</a></button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-info"><a class="btnLink" href="edit.php">Edit transaction</a></button>
+                </div>
+            
+                <div class="col-sm-2">
+                    <button class="btn btn-warning"><a class="btnLink" href="pie_chart.php">Pie chart</a></button>
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-default"><a class="btnLink" href="line_graph.php">Line graph</a></button>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>
+           
         </div>
-
-         <script type="text/javascript" src="js/home.js"></script>
+        <br />
+        <div class="container">
+            <div class="panel panel-primary allTransac">
+            <div class="panel-heading">All Your Transactions</div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped" id="tab1">
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Category</th>
+                        <th>Dealer</th>
+                        <th>Paid Status</th>
+                        <th>Amount</th>
+                    </table>
+                </div>
+            </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/home.js"></script>
         <script type="text/javascript" src="js/getAll.js"></script>
     </body>
 </html>

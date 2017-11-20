@@ -13,6 +13,27 @@ session_start();
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <style type="text/css">
+            body{
+
+            background-color: #ADD8E6;
+            background-image: url('css/img/black4.jpg');
+            background-position: center;*/
+            background-size: 100%;
+            background-repeat: no-repeat;
+
+        }
+         .allTransac{
+                height:400px;
+                overflow-x: scroll;
+                width:100%;
+
+            }
+        .jumbotron{
+            background-color: rgba(255, 235, 205, 0.7);
+
+        }
+        </style>
     </head>
     <body onload="getAll()">
         <div class="row">
@@ -76,9 +97,11 @@ session_start();
             </div><!-- ends container-fluid -->
           </nav>
         </div> <!-- nav bar ends here -->
-        <h1>Delete transactions</h1>
+        <div class="container">
+        <div class="jumbotron">
+        <center><h3><b>Select Transactions to Delete</b></h3></center>
         <form class="form" action="deleteThese.php" method="POST">
-            <div class="table-responsive">
+            <div class="table-responsive allTransac">
                 <table class="table table-bordered table-striped" id="tab1">
                     <th>Select</th>
                     <th>Date</th>
@@ -89,8 +112,12 @@ session_start();
                     <th>Amount</th>
                 </table>
             </div>
-             <button name="delete" class="btn btn-primary" type="submit" >Delete transaction(s)</button>
+            <center>
+             <button name="delete" class="btn btn-success" type="submit" >Delete Transaction(s)</button>
+             </center>
         </form>
+        </div>
+        </div>
         <script type="text/javascript" src="js/delete.js"></script>
         <script type="text/javascript" src="js/getAll.js"></script>
     </body>

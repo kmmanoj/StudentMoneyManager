@@ -10,6 +10,26 @@ session_start();
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <style>
+            body{
+
+                background-color: #ADD8E6;
+                background-image: url('css/img/black4.jpg');
+                background-position: center;*/
+                background-size: 100%;
+                background-repeat: no-repeat;
+
+            }
+            .allTransac{
+                height:350px;
+                overflow-y: scroll;
+                width:100%;
+            }
+            .set-width{
+                width:250px;
+            }
+           
+        </style>
     </head>
     <body onload="getAll()">
         <div class="row">
@@ -80,17 +100,17 @@ session_start();
                 <div class="panel-heading">Edit Transaction</div>
                 <div class="panel-body">
                 <form class="form" action="update.php" method="POST">
-                    <label>Id : <input name="id" id="id" type="text" disabled/></label><br/>
-                   <label>Date : <input name="date" id="date" type="text" placeholder="dd-mm-yyyy" /></label><br/>
-                    <label>Type :
-                        <select id="type" name="type">
+                   <input placeholder="Enter Id" class="form-control set-width" name="id" id="id" type="text" disabled/><br/>
+                   <input class="form-control set-width" name="date" id="date" type="text" placeholder="Enter date (dd-mm-yyyy)" /></label><br/>
+                    <label for:"type">Type:
+                        <select id="type" name="type" class="form-control" style="width:115px;">
                             <option value="credit" id="credit">Credit</option>
                             <option value="debit" id="debit">Debit</option>
                             <option value="save" id="save">Savings</option>
                         </select>
-                    </label><br/>
+                    </label>
                     <label>Category:
-                        <select name="category" id="category">
+                        <select class="form-control" name="category" id="category" style="width:115px;">
                             <option id="Food" value="food">Food</option>
                             <option id="Misc" value="misc">Misc</option>
                             <option id="Study" value="study">Study</option>
@@ -99,22 +119,22 @@ session_start();
                             <option id="personal" id="personal"="personal">Personal</option>
                             <option id="travel" value="travel">Travel</option>
                         </select>
-                    </label>
-                   <label>
-                        Dealer : <input id="dealer" name="dealer" type="text" placeholder="Dealer"/><br/>
-                    </label>
-                     <label>Paid Status : <input name="paid_status" id="paid_status" value="paid_status"type="checkbox"/></label><br/>
-                    <label>Amount <input name="amount" id="amount" type="number"/> </label><br/>
+                    </label> <br />
+                    <input id="dealer" class="form-control set-width" name="dealer" type="text" placeholder="Enter Dealer name"/><br/>
+                 
+                     <label for="paid_status">Paid Status : <input class="form-control" name="paid_status" id="paid_status" value="paid_status" type="checkbox" style="width:20px; height:20px" /></label><br/>
+                    <input class="form-control set-width" name="amount" id="amount" type="number" placeholder="Enter amount" /><br/>
                     <button class="btn btn-success" name="update" type="submit">Update transaction</button>
                     <div id="result"></div>
                     </form>
                 </div> <!--body 1 ends here -->
             </div> <!--panel default -->
+            <hr />
             <div class="panel panel-primary">
             <div class="panel-heading"> Select Transaction To Edit </div>
             <div class="panel-body">
-                <div class="table-responsive">
-                <table class="table table-bordered table-striped" id="tab1">
+                <div class="table-responsive allTransac">
+                <table class="table  table-bordered table-striped" id="tab1">
                     <th>Select</th>
                     <th>Date</th>
                     <th>Type</th>
@@ -128,7 +148,7 @@ session_start();
          </div>
         </div> <!--panel group -->
         </div> <!-- container -->
-
+        <hr/>
         <script type="text/javascript" src="js/edit.js"></script>
         <script type="text/javascript" src="js/getAll.js"></script>
     </body>
