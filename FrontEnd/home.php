@@ -31,6 +31,9 @@ session_start();
                 width:100%;
 
             }
+            .btn{
+                width:200px;
+            }
         </style>
     </head>
     <body onload="getAll()">
@@ -111,24 +114,32 @@ session_start();
                 </h3>
             </div>
             <div class="row">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <button class="btn btn-primary"><a class="btnLink" href="add.php"> Add transaction </a></button>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <button class="btn btn-success"><a class="btnLink" href="delete.php">Delete transaction</a></button>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <button class="btn btn-info"><a class="btnLink" href="edit.php">Edit transaction</a></button>
                 </div>
-            
-                <div class="col-sm-2">
+               
+                <div class="col-sm-3">
                     <button class="btn btn-warning"><a class="btnLink" href="pie_chart.php">Pie chart</a></button>
                 </div>
-                <div class="col-sm-2">
+                </div> <br/>
+                <div class="row">
+                
+               
+                <div class="col-sm-3">
                     <button class="btn btn-default"><a class="btnLink" href="line_graph.php">Line graph</a></button>
                 </div>
-                <div class="col-sm-1"></div>
+                <div class="col-sm-3">
+                    <button class="btn btn-warning"><a class="btnLink" href="owes.php">Owes</a></button>
+                </div>
+                 <div class="col-sm-3">
+                    <button class="btn btn-default"><a class="btnLink" href="debts.php">Debts</a></button>
+                </div>
             </div>
            
         </div>
