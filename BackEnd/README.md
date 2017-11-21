@@ -1,3 +1,4 @@
+<h1>API DOCUMENTATION</h1>
 <h3>GET /</h3>
 <p>response</p>
 <pre>
