@@ -192,7 +192,7 @@
 </pre>
 <hr/>
 
-<h3>GET /debts/update/<id></h3>
+<h3>GET /debts/update/&lt;id&gt;</h3>
 <p>response</p>
 <pre>
 {
@@ -230,7 +230,7 @@
 <hr/>
 
 
-<h3>GET /owes/update/<id></h3>
+<h3>GET /owes/update/&lt;id&gt;></h3>
 <p>response</p>
 <pre>
 {
