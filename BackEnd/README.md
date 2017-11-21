@@ -1,5 +1,4 @@
 <h3>GET /</h3>
-<fieldset>
 <p>response</p>
 <pre>
 {
