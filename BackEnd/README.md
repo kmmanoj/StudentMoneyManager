@@ -192,13 +192,7 @@
 </pre>
 <hr/>
 
-<h3>POST /debts/update</h3>
-<p>request</p>
-<pre>
-{
-	id : array([ string ])
-}
-</pre>
+<h3>GET /debts/update/<id></h3>
 <p>response</p>
 <pre>
 {
@@ -206,7 +200,7 @@
 	error : string,
 	response : 
 	{
-		count : int
+		status : boolean
 	}
 }
 </pre>
@@ -236,13 +230,7 @@
 <hr/>
 
 
-<h3>POST /owes/update</h3>
-<p>request</p>
-<pre>
-{
-	id : array([ string ])
-}
-</pre>
+<h3>GET /owes/update/<id></h3>
 <p>response</p>
 <pre>
 {
@@ -250,7 +238,7 @@
 	error : string,
 	response : 
 	{
-		count : int
+		status : boolean
 	}
 }
 </pre>
@@ -307,16 +295,14 @@
 		{
 			sunday :
 			{
-				credit : int,
-				debit : int,
-				save : int
+				actual : int,
+				virtual : int
 			}
 			...
 			saturday :
 			{
-				credit : int,
-				debit : int,
-				save : int
+				actual : int,
+				virtual : int
 			}
 		}
 	}
